@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"ls -la projects/pt-booking-landing/app/components/ 2>/dev/null && echo \\\"---COMPONENTS---\\\" && find projects/pt-booking-landing/app/components -name \\\"*.tsx\\\" | head -20\",\"description\":\"Li...",
+  "error": "Exit code 2",
+  "timestamp": "2026-06-03T00:48:22.872Z",
+  "retry_count": 1
+}
