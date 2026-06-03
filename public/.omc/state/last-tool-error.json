@@ -1,0 +1,7 @@
+{
+  "tool_name": "mcp__obsidian-vault__read_text_file",
+  "tool_input_preview": "{\"path\":\"07-Reference/api-keys.md\"}",
+  "error": "Parent directory does not exist: /home/tolgabrk/projects/Auto-Company/07-Reference",
+  "timestamp": "2026-06-03T03:59:38.834Z",
+  "retry_count": 1
+}
