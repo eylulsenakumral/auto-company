@@ -1,0 +1,19 @@
+{
+  "name": "automation-tests",
+  "version": "1.0.0",
+  "description": "QA-Bach verification suite for Auto Company automation",
+  "scripts": {
+    "test": "node run-quick-tests.sh",
+    "test:full": "node run-all-tests.sh",
+    "test:1": "node tests/test-1-send-email.js",
+    "test:2": "node tests/test-2-webhook.js",
+    "test:3": "node tests/test-3-twilio-call.js",
+    "test:4": "node tests/test-4-seed-prospects.js",
+    "test:5": "node tests/test-5-seed.js",
+    "test:6": "node tests/test-6-full-e2e.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.107.0",
+    "twilio": "^5.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+name = "nextvision-outreach-worker"
+main = "worker.ts"
+compatibility_date = "2024-01-01"
+# account_id = "YOUR_ACCOUNT_ID"  # Get from Cloudflare dashboard after login
+
+# Environment variables (public)
+[vars]
+ENVIRONMENT = "production"
+LOG_LEVEL = "info"
+
+# Cron trigger (daily 9AM Istanbul = 6AM UTC)
+[triggers]
+crons = ["0 6 * * *"]  # 6AM UTC = 9AM Istanbul (UTC+3)
+
+# Secret variables (set via: wrangler secret put <NAME>)
+# Required secrets:
+# - SENDGRID_API_KEY (from SendGrid dashboard)
+# - SUPABASE_URL (from Supabase project settings)
+# - SUPABASE_SERVICE_KEY (from Supabase project settings)
