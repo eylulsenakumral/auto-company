@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd ../eylulsenakumral/product-launch-tool && pwd && ls -la\",\"description\":\"Navigate to Product Hunt Tool project\"}",
-  "error": "Exit code 1\n/bin/bash: line 2: cd: ../eylulsenakumral/product-launch-tool: No such file or directory",
-  "timestamp": "2026-06-03T17:14:23.546Z",
-  "retry_count": 1
+  "tool_name": "mcp__firecrawl__firecrawl_search",
+  "tool_input_preview": "{\"query\":\"site:reddit.com/r/Telegram OR site:reddit.com/r/Discord_Bots \\\"bot analytics\\\" OR \\\"bot dashboard\\\" OR \\\"track bot\\\"\",\"limit\":5}",
+  "error": "Tool 'firecrawl_search' execution failed: Request failed while trying to search",
+  "timestamp": "2026-06-03T18:34:51.721Z",
+  "retry_count": 3
 }
