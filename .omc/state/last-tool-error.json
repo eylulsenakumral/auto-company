@@ -1,7 +1,7 @@
 {
-  "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/home/tolgabrk/projects/Auto-Company/memories/consensus.md\"}",
-  "error": "File does not exist. Note: your current working directory is /home/tolgabrk/projects/Auto-Company.",
-  "timestamp": "2026-06-03T04:23:22.064Z",
+  "tool_name": "mcp__firecrawl__firecrawl_search",
+  "tool_input_preview": "{\"query\":\"Gumroad vs Lemon Squeezy vs Payhip digital product delivery 2026 comparison fees\",\"limit\":5,\"scrapeOptions\":{\"formats\":[\"markdown\"],\"onlyMainContent\":true}}",
+  "error": "Tool 'firecrawl_search' execution failed: Request failed while trying to search",
+  "timestamp": "2026-06-03T04:33:51.041Z",
   "retry_count": 1
 }
