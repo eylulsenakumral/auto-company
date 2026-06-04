@@ -1,0 +1,62 @@
+name = "nextvision-outreach"
+main = "src/workers/index.ts"
+compatibility_date = "2024-01-01"
+account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+
+# Cron triggers - Turkey timezone (UTC+3)
+[triggers]
+crons = ["0 5 * * *"]  # 8:00 AM Turkey time (UTC+3 = 5:00 AM UTC)
+
+# Environment variables (secrets managed via wrangler secret put)
+[vars]
+ENVIRONMENT = "production"
+AUTOMATION_ENABLED = "true"
+WORKER_URL = "https://nextvision-outreach.your-subdomain.workers.rs"
+
+# D1 Database (SQLite backup - optional, Supabase is primary)
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "nextvision-prospects"
+# database_id = "YOUR_D1_DATABASE_ID"
+
+# KV Namespace (rate limiting cache - optional)
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "YOUR_KV_NAMESPACE_ID"
+
+# Queue (email job queue - optional, currently using direct calls)
+# [[queues.producers]]
+# binding = "EMAIL_QUEUE"
+# queue = "email-jobs"
+
+# [[queues.consumers]]
+# queue = "email-jobs"
+# max_batch_size = 10
+# max_wait_time_ms = 5000
+
+# R2 Bucket (file storage - optional, for attachments)
+# [[r2_buckets]]
+# binding = "ATTACHMENTS"
+# bucket_name = "nextvision-attachments"
+
+# Build configuration
+[build]
+command = "npm install && npm run build"
+cwd = "."
+watch_paths = ["src/**/*.ts"]
+
+# Development configuration
+[dev]
+port = 8787
+local_protocol = "http"
+upstream_protocol = "https"
+
+# Production deployment settings
+[env.production]
+routes = [
+  { pattern = "automation.nextvision.ai/*", zone_name = "nextvision.ai" }
+]
+
+# Staging deployment settings
+[env.staging]
+vars = { ENVIRONMENT = "staging", AUTOMATION_ENABLED = "false" }

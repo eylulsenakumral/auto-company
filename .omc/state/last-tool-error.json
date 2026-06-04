@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"ls out/\",\"description\":\"List files in out directory\"}",
-  "error": "Exit code 2\nls: cannot access 'out/': No such file or directory",
-  "timestamp": "2026-06-03T19:40:20.334Z",
-  "retry_count": 1
+  "tool_input_preview": "{\"command\":\"git checkout -b main\",\"description\":\"Rename branch to main\"}",
+  "error": "Exit code 128\n\n⚠️  AUTO COMPANY: Decision required. Run: /home/tolgabrk/projects/Auto-Company/scripts/human-action-needed.sh\n\nfatal: a branch named 'main' already exists",
+  "timestamp": "2026-06-04T01:03:48.455Z",
+  "retry_count": 2
 }

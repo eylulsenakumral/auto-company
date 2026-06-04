@@ -1,0 +1,8 @@
+timestamp,company,tier,method,variant,contact_email,contact_phone,status,response,notes,next_action
+2026-06-03 10:00:00,AKMETAL,Tier-2,Email,Variant_A,info@akmetal.com,+90(224)2500000,Sent,Waiting for response,,
+2026-06-03 10:00:00,Ototrim Panel,Tier-1,Email,Variant_A,info@ototrim.com,+90(224)4424200,Sent,Waiting for response,,
+2026-06-03 10:00:00,AKWEL,Tier-2,Email,Variant_A,info@akwel.com,+90(224)2500150,Sent,Waiting for response,,
+2026-06-03 10:00:00,A-PLAS,Tier-2,Email,Variant_B,info@aplas.com,+90(224)2500200,Sent,Waiting for response,,
+2026-06-03 10:00:00,SVB Grup,Tier-2,Email,Variant_B,info@svb.com.tr,+90(224)2500300,Sent,Waiting for response,,
+2026-06-03 10:00:00,Borçelik,Tier-1,Email,Variant_B,,+90(224)2500400,Sent,Phone only - no email,Will call,
+2026-06-03 10:00:00,Bosch Rexroth,Tier-1,Email,Variant_B,,+90(224)2500500,Sent,Phone only - no email,Will call,

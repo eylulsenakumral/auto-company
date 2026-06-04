@@ -1,0 +1,87 @@
+[
+  {
+    "id": "ops-kit-1",
+    "name": "Auto Company Ops Kit",
+    "category": "operations",
+    "price_stars": 50,
+    "emoji": "⚙️",
+    "description": "Complete operations management workspace for autonomous AI companies. Includes runbooks, incident tracking, metrics dashboards, and weekly review systems.",
+    "notion_url": "https://notion.so/auto-company-ops-kit-template",
+    "thumbnail": "https://placehold.co/400x300/4F46E5/white?text=Ops+Kit",
+    "tags": ["ops", "startup", "automation"],
+    "features": [
+      "Runbook templates",
+      "Incident tracking",
+      "Weekly review system",
+      "Metrics dashboards"
+    ]
+  },
+  {
+    "id": "product-tracker-1",
+    "name": "Product Roadmap Tracker",
+    "category": "product",
+    "price_stars": 40,
+    "emoji": "🎯",
+    "description": "Strategic product planning workspace with feature backlogs, priority matrices, and release timeline tracking.",
+    "notion_url": "https://notion.so/product-roadmap-tracker-template",
+    "thumbnail": "https://placehold.co/400x300/059669/white?text=Product+Tracker",
+    "tags": ["product", "roadmap", "planning"],
+    "features": [
+      "Feature backlog",
+      "Priority matrix",
+      "Release timeline",
+      "Stakeholder updates"
+    ]
+  },
+  {
+    "id": "content-system-1",
+    "name": "Content Production System",
+    "category": "marketing",
+    "price_stars": 45,
+    "emoji": "📝",
+    "description": "End-to-end content management workspace. From ideation to publishing, with editorial calendar and performance tracking.",
+    "notion_url": "https://notion.so/content-production-system-template",
+    "thumbnail": "https://placehold.co/400x300/DC2626/white?text=Content+System",
+    "tags": ["content", "marketing", "calendar"],
+    "features": [
+      "Idea bank",
+      "Editorial calendar",
+      "Content performance",
+      "Publishing workflow"
+    ]
+  },
+  {
+    "id": "sales-pipeline-1",
+    "name": "B2B Sales Pipeline",
+    "category": "sales",
+    "price_stars": 55,
+    "emoji": "💼",
+    "description": "Complete sales funnel management with lead tracking, deal stages, automated follow-ups, and revenue forecasting.",
+    "notion_url": "https://notion.so/b2b-sales-pipeline-template",
+    "thumbnail": "https://placehold.co/400x300/D97706/white?text=Sales+Pipeline",
+    "tags": ["sales", "b2b", "pipeline"],
+    "features": [
+      "Lead tracking",
+      "Deal stages",
+      "Follow-up automation",
+      "Revenue forecasting"
+    ]
+  },
+  {
+    "id": "finance-tracker-1",
+    "name": "Startup Finance Dashboard",
+    "category": "finance",
+    "price_stars": 60,
+    "emoji": "💰",
+    "description": "Financial management for startups with expense tracking, runway calculator, investor reporting, and unit economics.",
+    "notion_url": "https://notion.so/startup-finance-dashboard-template",
+    "thumbnail": "https://placehold.co/400x300/7C3AED/white?text=Finance+Dashboard",
+    "tags": ["finance", "startup", "metrics"],
+    "features": [
+      "Expense tracking",
+      "Runway calculator",
+      "Investor reporting",
+      "Unit economics"
+    ]
+  }
+]
