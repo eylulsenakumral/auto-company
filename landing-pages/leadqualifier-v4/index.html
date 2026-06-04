@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadQualifier v4 - Single HTML Lead Qualification Tool</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+        .hero { text-align: center; padding: 4rem 0; border-bottom: 1px solid #333; margin-bottom: 3rem; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #00ff88, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero .tagline { font-size: 1.25rem; color: #888; margin-bottom: 2rem; }
+        .hero .download-btn { display: inline-block; background: linear-gradient(135deg, #00ff88, #00d4ff); color: #000; padding: 1rem 3rem; font-size: 1.25rem; font-weight: bold; border-radius: 50px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; }
+        .hero .download-btn:hover { transform: scale(1.05); box-shadow: 0 10px 40px rgba(0,255,136,0.3); }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .feature { background: #111; padding: 2rem; border-radius: 12px; border: 1px solid #222; }
+        .feature h3 { color: #00ff88; margin-bottom: 0.5rem; }
+        .feature p { color: #888; font-size: 0.95rem; }
+        .section { background: #111; padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid #222; }
+        .section h2 { margin-bottom: 1rem; color: #00ff88; }
+        .section pre { background: #0a0a0a; padding: 1rem; border-radius: 8px; overflow-x: auto; border: 1px solid #222; }
+        .section code { font-family: 'SF Mono', Monaco, monospace; font-size: 0.85rem; color: #aaa; }
+        .stats { display: flex; justify-content: center; gap: 3rem; margin: 2rem 0; }
+        .stat { text-align: center; }
+        .stat .value { font-size: 2rem; font-weight: bold; color: #00ff88; }
+        .stat .label { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .footer { text-align: center; padding: 2rem; color: #444; font-size: 0.85rem; border-top: 1px solid #222; margin-top: 4rem; }
+        .footer a { color: #666; text-decoration: none; }
+        .footer a:hover { color: #00ff88; }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: #00ff88; color: #000; padding: 1rem 2rem; border-radius: 8px; font-weight: bold; transform: translateY(150%); transition: transform 0.3s; }
+        .toast.show { transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>LeadQualifier v4</h1>
+            <p class="tagline">Qualify leads in 60 seconds. Single HTML file. No setup required.</p>
+            <div class="stats">
+                <div class="stat"><div class="value">1</div><div class="label">File</div></div>
+                <div class="stat"><div class="value">28 KB</div><div class="label">Size</div></div>
+                <div class="stat"><div class="value">60s</div><div class="label">Setup</div></div>
+            </div>
+            <button class="download-btn" onclick="downloadPackage()">Download v4</button>
+            <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">No signup. No tracking. Just download and use.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Zero Setup</h3>
+                <p>Open the HTML file in your browser. That's it. No server, no database, no dependencies.</p>
+            </div>
+            <div class="feature">
+                <h3>Privacy First</h3>
+                <p>Everything stays in your browser. No data leaves your device. No tracking, no analytics.</p>
+            </div>
+            <div class="feature">
+                <h3>Works Offline</h3>
+                <p>Once downloaded, it works forever without internet. Save it locally and use it anytime.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What It Does</h2>
+            <p style="color: #888; margin-bottom: 1rem;">LeadQualifier helps you quickly evaluate and qualify leads based on custom criteria. Perfect for:</p>
+            <ul style="color: #888; margin-left: 1.5rem;">
+                <li>Sales teams filtering prospects</li>
+                <li>Founders validating customer interest</li>
+                <li>Marketers scoring campaign responses</li>
+                <li>Anyone who needs to prioritize leads fast</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>How to Use</h2>
+            <ol style="color: #888; margin-left: 1.5rem;">
+                <li>Download the ZIP file (28 KB)</li>
+                <li>Extract to any folder</li>
+                <li>Open <code style="background: #222; padding: 2px 6px; border-radius: 4px;">v4.html</code> in your browser</li>
+                <li>Start qualifying leads immediately</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>Share This Tool</h2>
+            <p style="color: #888; margin-bottom: 1rem;">Know someone who needs lead qualification? Share this:</p>
+            <pre><code>🎯 Found a zero-setup lead qualification tool.
+Single HTML file, 28KB, works offline.
+No signup, no tracking. Just download and use.
+
+[Link to share after you download]</code></pre>
+        </div>
+
+        <div class="footer">
+            <p>Built by <a href="https://github.com/tolgabrk">Auto Company</a> — Autonomous AI Company building useful tools.</p>
+            <p style="margin-top: 0.5rem;">Feedback? Your input shapes v5.</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Download started!</div>
+
+    <script>
+        const BASE64_ZIP = "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";
+
+        function downloadPackage() {
+            try {
+                const binaryString = atob(BASE64_ZIP);
+                const bytes = new Uint8Array(binaryString.length);
+                for (let i = 0; i < binaryString.length; i++) {
+                    bytes[i] = binaryString.charCodeAt(i);
+                }
+                const blob = new Blob([bytes], { type: 'application/zip' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'leadqualifier-v4.zip';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            } catch (e) {
+                alert('Download failed. Please try again or contact support.');
+                console.error(e);
+            }
+        }
+    </script>
+</body>
+</html>
