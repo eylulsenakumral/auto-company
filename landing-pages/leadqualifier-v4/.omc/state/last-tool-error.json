@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"pkill -f \\\"python.*8877\\\" 2>/dev/null; python3 -m http.server 8877 > /tmp/demo-server.log 2>&1 &\\nsleep 2\\ncurl -s -o /dev/null -w \\\"%{http_code}\\\" http://localhost:8877/\\necho \\\"\\\"\\necho ...",
-  "error": "Exit code 144",
-  "timestamp": "2026-06-04T22:06:12.216Z",
+  "tool_input_preview": "{\"command\":\"gh repo edit eylulsenakumral/leadqualifier-v4 --add topics \\\"landing-page,lead-generation,marketing,offline-ready,single-file\\\" 2>&1\",\"description\":\"Add topics to LeadQualifier repo\"}",
+  "error": "Exit code 1\nunknown flag: --add\n\nUsage:  gh repo edit [<repository>] [flags]\n\nFlags:\n      --add-topic strings        Add repository topic\n      --allow-forking            Allow forking of an organization repository\n      --allow-update-branch      Allow a pull request head branch that is behind its base branch to be updated\n      --default-branch name      Set the default branch name for the repository\n      --delete-branch-on-merge   Delete head branch when pull requests are merged\n  -d, --des...",
+  "timestamp": "2026-06-05T01:47:48.447Z",
   "retry_count": 1
 }

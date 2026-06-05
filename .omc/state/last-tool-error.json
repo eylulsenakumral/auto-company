@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"gh auth status 2>&1\",\"description\":\"Check GitHub authentication status\"}",
-  "error": "Exit code 1\nYou are not logged into any GitHub hosts. To log in, run: gh auth login",
-  "timestamp": "2026-06-05T00:07:55.552Z",
+  "tool_name": "mcp__obsidian-vault__read_text_file",
+  "tool_input_preview": "{\"path\":\"07-Reference/api-keys.md\"}",
+  "error": "Parent directory does not exist: /home/tolgabrk/projects/Auto-Company/07-Reference",
+  "timestamp": "2026-06-05T14:34:06.118Z",
   "retry_count": 1
 }

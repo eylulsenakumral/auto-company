@@ -1,0 +1,71 @@
+{
+  "version": "6.0.3",
+  "commands": {
+    "analyze": {
+      "pluginVersion": "0.1.0",
+      "path": "dist/commands/analyze",
+      "description": "Analyze GitHub Actions costs for a repository",
+      "aliases": [],
+      "examples": [],
+      "strict": true,
+      "pluginName": "github-actions-cost-optimizer",
+      "pluginType": "cli",
+      "state": "alpha",
+      "hidden": false,
+      "deprecated": false
+    },
+    "auth": {
+      "pluginVersion": "0.1.0",
+      "path": "dist/commands/auth",
+      "description": "Manage GitHub authentication token",
+      "aliases": [],
+      "examples": [],
+      "strict": true,
+      "pluginName": "github-actions-cost-optimizer",
+      "pluginType": "cli",
+      "state": "alpha",
+      "hidden": false,
+      "deprecated": false,
+      "args": [
+        {
+          "name": "token",
+          "description": "GitHub personal access token",
+          "required": false
+        }
+      ]
+    },
+    "cache": {
+      "pluginVersion": "0.1.0",
+      "path": "dist/commands/cache",
+      "description": "Manage local cache",
+      "aliases": [],
+      "examples": [],
+      "strict": true,
+      "pluginName": "github-actions-cost-optimizer",
+      "pluginType": "cli",
+      "state": "alpha",
+      "hidden": false,
+      "deprecated": false,
+      "args": [
+        {
+          "name": "action",
+          "description": "Cache action: clear, status",
+          "required": false
+        }
+      ]
+    },
+    "status": {
+      "pluginVersion": "0.1.0",
+      "path": "dist/commands/status",
+      "description": "Show current configuration and cache status",
+      "aliases": [],
+      "examples": [],
+      "strict": true,
+      "pluginName": "github-actions-cost-optimizer",
+      "pluginType": "cli",
+      "state": "alpha",
+      "hidden": false,
+      "deprecated": false
+    }
+  }
+}
