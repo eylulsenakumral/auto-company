@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"pkill -f \\\"python.*8877\\\" 2>/dev/null; python3 -m http.server 8877 > /tmp/demo-server.log 2>&1 &\\nsleep 2\\ncurl -s -o /dev/null -w \\\"%{http_code}\\\" http://localhost:8877/\\necho \\\"\\\"\\necho ...",
+  "error": "Exit code 144",
+  "timestamp": "2026-06-04T22:06:12.216Z",
+  "retry_count": 1
+}

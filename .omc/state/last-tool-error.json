@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd /home/tolgabrk/projects/Auto-Company/projects/leadqualifier && timeout 10 npm run dev\",\"description\":\"Test dev server starts successfully\"}",
-  "error": "Exit code 124\n\n> leadqualifier@0.1.0 dev\n> next dev\n\n⚠ Port 3000 is in use by an unknown process, using available port 3004 instead.\n▲ Next.js 16.2.7 (Turbopack)\n- Local:         http://localhost:3004\n- Network:       http://192.168.5.247:3004\n✓ Ready in 413ms\n⚠ Warning: Next.js inferred your workspace root, but it may not be correct.\n We detected multiple lockfiles and selected the directory of /home/tolgabrk/package-lock.json as the root directory.\n To silence this warning, set `turbopack.root...",
-  "timestamp": "2026-06-04T19:10:08.018Z",
-  "retry_count": 7
+  "tool_input_preview": "{\"command\":\"gh auth status 2>&1\",\"description\":\"Check GitHub authentication status\"}",
+  "error": "Exit code 1\nYou are not logged into any GitHub hosts. To log in, run: gh auth login",
+  "timestamp": "2026-06-05T00:07:55.552Z",
+  "retry_count": 1
 }

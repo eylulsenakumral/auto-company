@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Company — Product Feedback</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0a0e27;
+            --accent: #00d4aa;
+            --text: #e8e8e8;
+            --border: #1f2937;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .form {
+            background: rgba(31, 41, 55, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .field {
+            margin-bottom: 1.5rem;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .field textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .product-select {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .product-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .product-option input {
+            display: none;
+        }
+
+        .product-option label {
+            display: block;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .product-option input:checked + label {
+            background: rgba(0, 212, 170, 0.2);
+            border-color: var(--accent);
+        }
+
+        .rating {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .rating label:hover {
+            transform: scale(1.2);
+        }
+
+        .rating input:checked + label {
+            color: var(--accent);
+        }
+
+        .submit {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: filter 0.2s;
+        }
+
+        .submit:hover {
+            filter: brightness(1.1);
+        }
+
+        .telegram-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .telegram-note a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .telegram-emoji {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Product Feedback</h1>
+            <p>Help shape the next AI-built product</p>
+        </div>
+
+        <form class="form" onsubmit="submitFeedback(event)">
+            <div class="field">
+                <label>Which product(s) did you try?</label>
+                <div class="product-select">
+                    <div class="product-option">
+                        <input type="checkbox" id="p1" name="products" value="leadqualifier">
+                        <label for="p1">🎯 LeadQualifier</label>
+                    </div>
+                    <div class="product-option">
+                        <input type="checkbox" id="p2" name="products" value="mockfirst">
+                        <label for="p2">🔧 MockFirst</label>
+                    </div>
+                    <div class="product-option">
+                        <input type="checkbox" id="p3" name="products" value="landing-pages">
+                        <label for="p3">🚀 Landing Pages</label>
+                    </div>
+                    <div class="product-option">
+                        <input type="checkbox" id="p4" name="products" value="changelog">
+                        <label for="p4">📝 Changelog</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Overall impression</label>
+                <div class="rating">
+                    <input type="radio" id="r1" name="rating" value="1">
+                    <label for="r1" title="Poor">😕</label>
+
+                    <input type="radio" id="r2" name="rating" value="2">
+                    <label for="r2" title="Fair">😐</label>
+
+                    <input type="radio" id="r3" name="rating" value="3" checked>
+                    <label for="r3" title="Good">🙂</label>
+
+                    <input type="radio" id="r4" name="rating" value="4">
+                    <label for="r4" title="Great">😊</label>
+
+                    <input type="radio" id="r5" name="rating" value="5">
+                    <label for="r5" title="Excellent">🤩</label>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="feedback">Your thoughts</label>
+                <textarea id="feedback" name="feedback" placeholder="What did you like? What could be better? Which product would you actually use?"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="email">Email (optional)</label>
+                <input type="email" id="email" name="email" placeholder="If you want a reply">
+            </div>
+
+            <button type="submit" class="submit">Send Feedback</button>
+        </form>
+
+        <div class="telegram-note">
+            <span class="telegram-emoji">✈️</span>
+            Prefer direct contact? <a href="https://t.me/tolgabrk" target="_blank">Message on Telegram: @tolgabrk</a>
+        </div>
+    </div>
+
+    <script>
+        function submitFeedback(e) {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const data = {
+                products: Array.from(formData.getAll('products')),
+                rating: formData.get('rating'),
+                feedback: formData.get('feedback'),
+                email: formData.get('email') || '',
+                timestamp: new Date().toISOString()
+            };
+
+            // Generate feedback message for Telegram
+            const message = `
+🎯 *Auto Company Feedback*
+
+*Products:* ${data.products.join(', ') || 'None specified'}
+*Rating:* ${data.rating}/5
+*Feedback:* ${data.feedback || 'No comments'}
+*Email:* ${data.email || 'Not provided'}
+
+_Time: ${data.timestamp}_
+            `.trim();
+
+            // Copy to clipboard with instructions
+            navigator.clipboard.writeText(message).then(() => {
+                alert('Feedback generated!\n\nMessage copied to clipboard.\n\n1. Open Telegram: https://t.me/tolgabrk\n2. Paste and send\n\nThanks for your feedback!');
+            });
+
+            // Also log to console (for development)
+            console.log('Feedback data:', data);
+        }
+    </script>
+</body>
+</html>

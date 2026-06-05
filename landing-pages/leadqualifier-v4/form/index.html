@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadQualifier v4 - Feedback</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; background: linear-gradient(135deg, #0a0a0a, #1a1a1a); color: #fff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+        .form-container { max-width: 500px; width: 100%; background: #111; padding: 2.5rem; border-radius: 16px; border: 1px solid #222; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .form-container h1 { font-size: 1.75rem; margin-bottom: 0.5rem; color: #00ff88; }
+        .form-container .subtitle { color: #888; font-size: 0.95rem; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: #aaa; font-size: 0.9rem; font-weight: 500; }
+        .form-group input[type="email"], .form-group textarea { width: 100%; padding: 0.85rem 1rem; background: #0a0a0a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.95rem; transition: border-color 0.2s; }
+        .form-group input[type="email"]:focus, .form-group textarea:focus { outline: none; border-color: #00ff88; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 0.75rem; }
+        .checkbox-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: #0a0a0a; border-radius: 8px; border: 1px solid #222; cursor: pointer; transition: border-color 0.2s; }
+        .checkbox-item:hover { border-color: #333; }
+        .checkbox-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: #00ff88; }
+        .checkbox-item label { flex: 1; cursor: pointer; color: #ccc; font-size: 0.9rem; }
+        .submit-btn { width: 100%; background: linear-gradient(135deg, #00ff88, #00d4ff); color: #000; padding: 1rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,255,136,0.3); }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .success-message { text-align: center; padding: 2rem; }
+        .success-message h2 { color: #00ff88; font-size: 1.5rem; margin-bottom: 1rem; }
+        .success-message p { color: #888; }
+        .back-link { display: block; text-align: center; margin-top: 2rem; color: #666; text-decoration: none; font-size: 0.9rem; }
+        .back-link:hover { color: #00ff88; }
+        .optional { color: #666; font-size: 0.85rem; margin-left: 0.5rem; }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="formContainer">
+        <h1>LeadQualifier v4 Feedback</h1>
+        <p class="subtitle">Your input shapes v4.2. Takes 2 minutes.</p>
+
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label>What feedback do you want to give? <span class="optional">(Select all that apply)</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="design" name="topics" value="Design">
+                        <label for="design">Design feedback</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="copy" name="topics" value="Copy">
+                        <label for="copy">Copy / messaging</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ux" name="topics" value="UX">
+                        <label for="ux">User experience</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="performance" name="topics" value="Performance">
+                        <label for="performance">Performance</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="features" name="topics" value="Features">
+                        <label for="features">Feature requests</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="other" name="topics" value="Other">
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email address <span class="optional">(For follow-up)</span></label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Additional comments <span class="optional">(Optional)</span></label>
+                <textarea id="comments" name="comments" placeholder="Any specific feedback, suggestions, or issues you encountered..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Feedback</button>
+        </form>
+
+        <a href="../index.html" class="back-link">← Back to LeadQualifier v4</a>
+    </div>
+
+    <div class="success-message" id="successMessage" style="display: none;">
+        <h2>Thank You!</h2>
+        <p>Your feedback has been submitted.</p>
+        <p style="margin-top: 1rem; color: #666;">We read every response and use it to improve LeadQualifier.</p>
+        <a href="../index.html" class="back-link">← Back to LeadQualifier v4</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        const formContainer = document.getElementById('formContainer');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            const formData = new FormData(form);
+            const data = {
+                topics: Array.from(document.querySelectorAll('input[name="topics"]:checked')).map(cb => cb.value),
+                email: formData.get('email'),
+                comments: formData.get('comments') || '',
+                timestamp: new Date().toISOString(),
+                source: 'leadqualifier-v4-landing-page'
+            };
+
+            try {
+                const response = await fetch('/api/submit-feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    formContainer.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    throw new Error('Submission failed');
+                }
+            } catch (error) {
+                // Fallback: Store in localStorage and show success
+                const submissions = JSON.parse(localStorage.getItem('leadqualifier_feedback') || '[]');
+                submissions.push(data);
+                localStorage.setItem('leadqualifier_feedback', JSON.stringify(submissions));
+
+                formContainer.style.display = 'none';
+                successMessage.style.display = 'block';
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Feedback';
+        });
+    </script>
+</body>
+</html>

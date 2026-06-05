@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Release Auto-Changelog Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
+            --text-muted: #8b949e;
+            --green: #238636;
+            --green-glow: rgba(35, 134, 54, 0.3);
+            --blue: #58a6ff;
+            --purple: #8957e5;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 80px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+            animation: fadeIn 0.6s ease-out 0.2s both;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(88, 166, 255, 0.15);
+            border: 1px solid var(--blue);
+            border-radius: 20px;
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--blue);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--text) 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            padding: 14px 28px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #2ea043;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--green-glow);
+        }
+
+        .btn-secondary {
+            padding: 14px 28px;
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+        }
+
+        /* Demo */
+        .demo-section {
+            margin-bottom: 100px;
+            animation: fadeIn 0.6s ease-out 0.4s both;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-family: 'DM Mono', monospace;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-window {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .window-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .window-dot.red { background: #ff5f56; }
+        .window-dot.yellow { background: #ffbd2e; }
+        .window-dot.green { background: #27ca40; }
+
+        .window-title {
+            margin-left: 12px;
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .demo-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .demo-input, .demo-output {
+            padding: 32px;
+        }
+
+        .demo-input {
+            border-right: 1px solid var(--border);
+        }
+
+        .demo-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .code-block {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .code-line {
+            display: flex;
+            gap: 16px;
+        }
+
+        .line-num {
+            color: var(--text-muted);
+            opacity: 0.5;
+            user-select: none;
+        }
+
+        .keyword { color: #ff7b72; }
+        .string { color: #a5d6ff; }
+        .comment { color: #8b949e; }
+        .func { color: #d2a8ff; }
+
+        .changelog-preview {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .changelog-version {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .changelog-date {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .changelog-section {
+            margin-bottom: 20px;
+        }
+
+        .changelog-section-title {
+            font-size: 12px;
+            font-family: 'DM Mono', monospace;
+            color: var(--blue);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .changelog-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .changelog-item::before {
+            content: '•';
+            color: var(--text-muted);
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+            animation: fadeIn 0.6s ease-out 0.6s both;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(35, 134, 54, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Workflow */
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 80px;
+            animation: fadeIn 0.6s ease-out 0.8s both;
+        }
+
+        .workflow-step {
+            text-align: center;
+            padding: 24px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .workflow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--text-muted);
+        }
+
+        .step-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 8px;
+        }
+
+        .workflow-step h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .workflow-step p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 14px;
+            animation: fadeIn 0.6s ease-out 1s both;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .demo-content {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-input {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow {
+                grid-template-columns: 1fr;
+            }
+
+            .workflow-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -20px;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">📋</div>
+                <span>Changelog Generator</span>
+            </div>
+            <nav class="nav">
+                <a href="#">Docs</a>
+                <a href="#">GitHub</a>
+                <a href="#">npm</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <span class="hero-tag">v2.0 Now Available</span>
+            <h1>Auto-Generate<br><span>Release Changelogs</span></h1>
+            <p>Stop writing changelogs manually. Connect your GitHub repo, and every release gets a beautiful, structured changelog instantly.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary">Get Started Free →</a>
+                <a href="#" class="btn-secondary">View Demo</a>
+            </div>
+        </section>
+
+        <section class="demo-section">
+            <div class="section-header">
+                <div class="section-title">How It Works</div>
+            </div>
+            <div class="demo-window">
+                <div class="window-header">
+                    <div class="window-dot red"></div>
+                    <div class="window-dot yellow"></div>
+                    <div class="window-dot green"></div>
+                    <div class="window-title">github.com/your-repo/releases</div>
+                </div>
+                <div class="demo-content">
+                    <div class="demo-input">
+                        <div class="demo-label">Your Commits</div>
+                        <div class="code-block">
+<div class="code-line"><span class="line-num">1</span><span><span class="func">feat</span>: add dark mode support</span></div>
+<div class="code-line"><span class="line-num">2</span><span><span class="func">fix</span>: resolve login bug</span></div>
+<div class="code-line"><span class="line-num">3</span><span><span class="func">feat</span>: user profile page</span></div>
+<div class="code-line"><span class="line-num">4</span><span><span class="func">fix</span>: API timeout issue</span></div>
+<div class="code-line"><span class="line-num">5</span><span><span class="func">chore</span>: update deps</span></div>
+<div class="code-line"><span class="line-num">6</span><span><span class="func">docs</span>: README improvements</span></div>
+                        </div>
+                    </div>
+                    <div class="demo-output">
+                        <div class="demo-label">Generated Changelog</div>
+                        <div class="changelog-preview">
+                            <div class="changelog-version">v2.1.0</div>
+                            <div class="changelog-date">June 4, 2026</div>
+
+                            <div class="changelog-section">
+                                <div class="changelog-section-title">✨ Features</div>
+                                <div class="changelog-item">Add dark mode support</div>
+                                <div class="changelog-item">User profile page</div>
+                            </div>
+
+                            <div class="changelog-section">
+                                <div class="changelog-section-title">🐛 Bug Fixes</div>
+                                <div class="changelog-item">Resolve login bug</div>
+                                <div class="changelog-item">API timeout issue</div>
+                            </div>
+
+                            <div class="changelog-section">
+                                <div class="changelog-section-title">📝 Documentation</div>
+                                <div class="changelog-item">README improvements</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h4>Zero Config</h4>
+                <p>Connect your repo. That's it. Conventional commits are auto-detected and categorized.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h4>Beautiful Output</h4>
+                <p>Markdown, HTML, or JSON. Clean, structured, ready for GitHub releases.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔌</div>
+                <h4>GitHub Integration</h4>
+                <p>Works with GitHub releases. Auto-publish on tag push.</p>
+            </div>
+        </section>
+
+        <section class="workflow">
+            <div class="workflow-step">
+                <div class="step-num">01</div>
+                <h4>Connect Repo</h4>
+                <p>Link your GitHub repository</p>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">02</div>
+                <h4>Push Code</h4>
+                <p>Use conventional commits</p>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">03</div>
+                <h4>Create Release</h4>
+                <p>Tag and push to GitHub</p>
+            </div>
+            <div class="workflow-step">
+                <div class="step-num">04</div>
+                <h4>Auto Changelog</h4>
+                <p>Instantly generated</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Built by Auto Company • MIT License</p>
+            <div class="footer-links">
+                <a href="#">GitHub</a>
+                <a href="#">Documentation</a>
+                <a href="#">Report Issue</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

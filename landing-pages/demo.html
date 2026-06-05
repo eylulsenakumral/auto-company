@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 Smoke Test Landing Pages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0f;
+            --card-bg: #12121a;
+            --border: #2a2a35;
+            --accent: #00ff9d;
+            --accent-2: #ff00ff;
+            --accent-3: #00d4ff;
+            --accent-4: #ffaa00;
+            --accent-5: #ff4757;
+            --text: #e8e8f0;
+            --text-muted: #6b6b7b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Matrix rain effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 80px;
+            padding: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Products grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .product-card:nth-child(1)::before { background: var(--accent); }
+        .product-card:nth-child(2)::before { background: var(--accent-2); }
+        .product-card:nth-child(3)::before { background: var(--accent-3); }
+        .product-card:nth-child(4)::before { background: var(--accent-4); }
+        .product-card:nth-child(5)::before { background: var(--accent-5); }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .product-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-card .tagline {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 16px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        /* Framework */
+        .framework {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 80px;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .framework-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .compare-col h4 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .compare-traditional .step-num { background: #3a2a2a; color: #ff6b6b; }
+        .compare-smoke .step-num { background: rgba(0, 255, 157, 0.2); color: var(--accent); }
+
+        .step-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .step-text strong {
+            color: var(--text);
+        }
+
+        /* Decision table */
+        .decision-table {
+            overflow-x: auto;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        .decision-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .decision-table th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            text-align: left;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .decision-table td {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .decision-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .threshold {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+        }
+
+        .decision {
+            font-weight: 600;
+        }
+
+        .decision.go { color: var(--accent); }
+        .decision.warn { color: var(--accent-4); }
+        .decision.stop { color: var(--accent-5); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 14px;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas class="matrix-bg" id="matrix"></canvas>
+
+    <div class="container">
+        <header class="header">
+            <span class="badge">5 Products, 1 Week, Real Validation</span>
+            <h1>Smoke Test Landing Pages</h1>
+            <p>Test product ideas with real landing pages before writing a single line of code. Measure interest, kill failures fast, build what matters.</p>
+        </header>
+
+        <section class="stats-bar">
+            <div class="stat">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Product Tests</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">$20K</div>
+                <div class="stat-label">Est. Value</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">7</div>
+                <div class="stat-label">Days to Validate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Lines of Code</div>
+            </div>
+        </section>
+
+        <section class="products-grid">
+            <div class="product-card">
+                <div class="product-number">PRODUCT 01</div>
+                <div class="product-icon">🤖</div>
+                <h3>Agent Test CLI</h3>
+                <p class="tagline">Test your AI agent in 5 minutes</p>
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-3);"></span>
+                        <span>AI/LLM devs</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent);"></span>
+                        <span>HN + npm</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Est. $5K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-number">PRODUCT 02</div>
+                <div class="product-icon">🐳</div>
+                <h3>Stack CLI</h3>
+                <p class="tagline">Stop writing YAML, start running containers</p>
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-2);"></span>
+                        <span>DevOps/backend</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-4);"></span>
+                        <span>Reddit r/docker</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Est. $3.5K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-number">PRODUCT 03</div>
+                <div class="product-icon">🔄</div>
+                <h3>Env Sync CLI</h3>
+                <p class="tagline">Sync .env across your team in 1 command</p>
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent);"></span>
+                        <span>Full-stack devs</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-3);"></span>
+                        <span>Product Hunt</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Est. $3K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-number">PRODUCT 04</div>
+                <div class="product-icon">📚</div>
+                <h3>Doc From Test CLI</h3>
+                <p class="tagline">Stop writing API docs — Let your tests do it</p>
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-4);"></span>
+                        <span>Backend devs</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent);"></span>
+                        <span>SEO long-tail</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Est. $3K</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-number">PRODUCT 05</div>
+                <div class="product-icon">👥</div>
+                <h3>Onboard Gen CLI</h3>
+                <p class="tagline">Generate team onboarding scripts in 5 minutes</p>
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-5);"></span>
+                        <span>Tech leads</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-dot" style="background: var(--accent-2);"></span>
+                        <span>dev.to + GH</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>Est. $4K</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="framework">
+            <div class="framework-title">Why Smoke Test?</div>
+            <div class="comparison">
+                <div class="compare-col compare-traditional">
+                    <h4>Traditional (Fail Slow)</h4>
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-text"><strong>Have idea</strong> 💡</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-text"><strong>Build MVP</strong> (2-4 weeks) 🛠️</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-text"><strong>Launch</strong> 🚀</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-text"><strong>Hope for traction</strong> 🤞</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">5</div>
+                        <div class="step-text"><strong>Fail silently</strong> ❌</div>
+                    </div>
+                </div>
+                <div class="compare-col compare-smoke">
+                    <h4>Smoke Test (Fail Fast)</h4>
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-text"><strong>Have idea</strong> 💡</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-text"><strong>Build landing page</strong> (1 day) 📄</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-text"><strong>Measure interest</strong> (signups, clicks) 📊</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-text"><strong>If validated</strong> → Build MVP ✅</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">5</div>
+                        <div class="step-text"><strong>If not</strong> → Kill idea fast 🚮</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="decision-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Threshold</th>
+                        <th>Decision</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Signups after 1 week</td>
+                        <td class="threshold">&gt; 50</td>
+                        <td class="decision go">✅ Build MVP</td>
+                    </tr>
+                    <tr>
+                        <td>Signups after 1 week</td>
+                        <td class="threshold">10-50</td>
+                        <td class="decision warn">⚠️ Improve copy, retest</td>
+                    </tr>
+                    <tr>
+                        <td>Signups after 1 week</td>
+                        <td class="threshold">&lt; 10</td>
+                        <td class="decision stop">❌ Kill idea</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="footer">
+            <p>Validate ideas fast, build products that matter.</p>
+            <p style="margin-top: 8px;">Auto Company • <a href="#">GitHub</a> • <a href="#">Telegram @tolgabrk</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソタチツテト';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * canvas.height / fontSize;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff9d';
+            ctx.font = fontSize + 'px JetBrains Mono';
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

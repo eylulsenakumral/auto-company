@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadQualifier - B2B Lead Scoring Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a2540;
+            --primary-light: #1a3a5c;
+            --accent: #00d4aa;
+            --accent-glow: rgba(0, 212, 170, 0.3);
+            --text: #e8e8e8;
+            --text-muted: #8b9cb5;
+            --border: #2a3f5f;
+            --card-bg: rgba(26, 58, 92, 0.4);
+            --gradient-1: linear-gradient(135deg, #0a2540 0%, #1a3a5c 50%, #0f2847 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4aa 0%, #00a88a 100%);
+            --tier-hot: #ff4757;
+            --tier-warm: #ffa502;
+            --tier-cool: #3742fa;
+            --tier-cold: #747d8c;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: pulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease-out;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Input Card */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-title-icon {
+            font-size: 24px;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(10, 37, 64, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Range Slider */
+        .range-container {
+            position: relative;
+        }
+
+        .range-input {
+            width: 100%;
+            height: 6px;
+            background: var(--primary-light);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .range-input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .range-value {
+            position: absolute;
+            right: 0;
+            top: -28px;
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Button */
+        .score-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .score-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--accent-glow);
+        }
+
+        .score-button:active {
+            transform: translateY(0);
+        }
+
+        .score-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Results */
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        /* Score Header */
+        .score-header {
+            text-align: center;
+            padding: 32px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .score-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .score-circle-bg {
+            fill: none;
+            stroke: var(--primary-light);
+            stroke-width: 8;
+        }
+
+        .score-circle-progress {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            animation: scoreProgress 1.5s ease-out forwards;
+        }
+
+        @keyframes scoreProgress {
+            to { stroke-dashoffset: var(--score-offset, 50); }
+        }
+
+        .score-circle-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .score-tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            animation: tierReveal 0.8s ease-out 0.3s both;
+        }
+
+        .score-tier-badge.hot {
+            background: rgba(255, 71, 87, 0.2);
+            border: 1px solid var(--tier-hot);
+            color: var(--tier-hot);
+        }
+
+        .score-tier-badge.warm {
+            background: rgba(255, 165, 2, 0.2);
+            border: 1px solid var(--tier-warm);
+            color: var(--tier-warm);
+        }
+
+        .score-tier-badge.cool {
+            background: rgba(55, 66, 250, 0.2);
+            border: 1px solid var(--tier-cool);
+            color: var(--tier-cool);
+        }
+
+        .score-tier-badge.cold {
+            background: rgba(116, 125, 140, 0.2);
+            border: 1px solid var(--tier-cold);
+            color: var(--tier-cold);
+        }
+
+        @keyframes tierReveal {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Signals Grid */
+        .signals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .signal-card {
+            background: rgba(10, 37, 64, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            animation: fadeInUp 0.4s ease-out both;
+        }
+
+        .signal-card:nth-child(2) { animation-delay: 0.1s; }
+        .signal-card:nth-child(3) { animation-delay: 0.2s; }
+        .signal-card:nth-child(4) { animation-delay: 0.3s; }
+        .signal-card:nth-child(5) { animation-delay: 0.4s; }
+        .signal-card:nth-child(6) { animation-delay: 0.5s; }
+
+        .signal-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .signal-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signal-value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .signal-value.high {
+            color: var(--accent);
+        }
+
+        .signal-value.medium {
+            color: var(--tier-warm);
+        }
+
+        .signal-value.low {
+            color: var(--tier-cold);
+        }
+
+        /* Tech Stack Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            padding: 6px 12px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .action-button {
+            flex: 1;
+            padding: 14px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-button:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* History */
+        .history-section {
+            margin-top: 40px;
+        }
+
+        .history-title {
+            font-size: 14px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            background: rgba(10, 37, 64, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .history-item:hover {
+            border-color: var(--accent);
+        }
+
+        .history-domain {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .history-score {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .history-score-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .history-tier {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .history-tier.hot { background: rgba(255, 71, 87, 0.2); color: var(--tier-hot); }
+        .history-tier.warm { background: rgba(255, 165, 2, 0.2); color: var(--tier-warm); }
+        .history-tier.cool { background: rgba(55, 66, 250, 0.2); color: var(--tier-cool); }
+        .history-tier.cold { background: rgba(116, 125, 140, 0.2); color: var(--tier-cold); }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 60px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .loading-spinner {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-light);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">LeadQualifier</div>
+            <div class="header-actions">
+                <span class="badge">Local-First</span>
+                <span class="badge">No API Keys</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Input Card -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-title-icon">🎯</span>
+                    Score a Lead
+                </div>
+
+                <form id="scoreForm">
+                    <div class="form-group">
+                        <label class="form-label">Company Domain</label>
+                        <input type="text" class="form-input" id="domain" placeholder="e.g., stripe.com" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Company Size</label>
+                            <select class="form-select" id="companySize">
+                                <option value="">Select size...</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501-1000">501-1000 employees</option>
+                                <option value="1000+">1000+ employees</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Industry</label>
+                            <select class="form-select" id="industry">
+                                <option value="">Select industry...</option>
+                                <option value="saas">SaaS</option>
+                                <option value="fintech">FinTech</option>
+                                <option value="ecommerce">E-Commerce</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Funding Stage</label>
+                            <select class="form-select" id="fundingStage">
+                                <option value="">Select stage...</option>
+                                <option value="bootstrapped">Bootstrapped</option>
+                                <option value="seed">Seed</option>
+                                <option value="series-a">Series A</option>
+                                <option value="series-b">Series B</option>
+                                <option value="series-c+">Series C+</option>
+                                <option value="ipo">Public</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Growth Rate</label>
+                            <select class="form-select" id="growthRate">
+                                <option value="">Select growth...</option>
+                                <option value="declining">Declining</option>
+                                <option value="stable">Stable</option>
+                                <option value="moderate">Moderate (10-30%)</option>
+                                <option value="rapid">Rapid (30%+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tech sophistication</label>
+                        <div class="range-container">
+                            <span class="range-value" id="techScoreValue">50</span>
+                            <input type="range" class="range-input" id="techScore" min="0" max="100" value="50">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="score-button">
+                        <span>Calculate Score</span>
+                        <span>→</span>
+                    </button>
+                </form>
+
+                <div class="history-section">
+                    <div class="history-title">Recent Scores</div>
+                    <div class="history-list" id="historyList">
+                        <div class="empty-state">
+                            <div class="empty-icon">📊</div>
+                            <p>No scores yet. Enter a company above to get started.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Card -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-title-icon">📊</span>
+                    Score Results
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Analyzing company signals...</p>
+                </div>
+
+                <div class="results-container" id="results">
+                    <div class="score-header">
+                        <div class="score-circle">
+                            <svg width="120" height="120" viewBox="0 0 120 120">
+                                <circle class="score-circle-bg" cx="60" cy="60" r="54"></circle>
+                                <circle class="score-circle-progress" cx="60" cy="60" r="54" id="scoreProgress"></circle>
+                            </svg>
+                            <div class="score-circle-text" id="scoreValue">0</div>
+                        </div>
+                        <div class="score-tier-badge" id="tierBadge">
+                            <span id="tierEmoji">🔥</span>
+                            <span id="tierText">Hot Lead</span>
+                        </div>
+                    </div>
+
+                    <div class="signals-grid">
+                        <div class="signal-card">
+                            <div class="signal-icon">🏢</div>
+                            <div class="signal-label">Company Size</div>
+                            <div class="signal-value" id="sizeSignal">-</div>
+                        </div>
+                        <div class="signal-card">
+                            <div class="signal-icon">💰</div>
+                            <div class="signal-label">Funding Stage</div>
+                            <div class="signal-value" id="fundingSignal">-</div>
+                        </div>
+                        <div class="signal-card">
+                            <div class="signal-icon">📈</div>
+                            <div class="signal-label">Growth Rate</div>
+                            <div class="signal-value" id="growthSignal">-</div>
+                        </div>
+                        <div class="signal-card">
+                            <div class="signal-icon">🎯</div>
+                            <div class="signal-label">Industry Fit</div>
+                            <div class="signal-value" id="industrySignal">-</div>
+                        </div>
+                        <div class="signal-card">
+                            <div class="signal-icon">⚡</div>
+                            <div class="signal-label">Tech Score</div>
+                            <div class="signal-value" id="techSignal">-</div>
+                        </div>
+                        <div class="signal-card">
+                            <div class="signal-icon">🏆</div>
+                            <div class="signal-label">Overall Potential</div>
+                            <div class="signal-value high" id="potentialSignal">-</div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-button" id="exportBtn">📥 Export JSON</button>
+                        <button class="action-button" id="copyBtn">📋 Copy Results</button>
+                    </div>
+                </div>
+
+                <div class="empty-state" id="resultsEmpty">
+                    <div class="empty-icon">🎯</div>
+                    <p>Enter company details and click "Calculate Score" to see results.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>LeadQualifier by <a href="https://github.com/eylulsenakumral" target="_blank">Auto Company</a> • Local-First B2B Tool</p>
+        </footer>
+    </div>
+
+    <script>
+        // State
+        let scores = JSON.parse(localStorage.getItem('leadQualifierScores') || '[]');
+
+        // DOM Elements
+        const form = document.getElementById('scoreForm');
+        const techScore = document.getElementById('techScore');
+        const techScoreValue = document.getElementById('techScoreValue');
+        const loading = document.getElementById('loading');
+        const results = document.getElementById('results');
+        const resultsEmpty = document.getElementById('resultsEmpty');
+        const historyList = document.getElementById('historyList');
+
+        // Update range value display
+        techScore.addEventListener('input', () => {
+            techScoreValue.textContent = techScore.value;
+        });
+
+        // Scoring algorithm
+        function calculateScore(data) {
+            let score = 0;
+            const signals = {};
+
+            // Company size score (0-25 points)
+            const sizeScores = {
+                '1-10': 5,
+                '11-50': 10,
+                '51-200': 15,
+                '201-500': 20,
+                '501-1000': 23,
+                '1000+': 25
+            };
+            const sizeScore = sizeScores[data.companySize] || 0;
+            score += sizeScore;
+            signals.size = { value: data.companySize, score: sizeScore };
+
+            // Funding stage score (0-25 points)
+            const fundingScores = {
+                'bootstrapped': 10,
+                'seed': 15,
+                'series-a': 18,
+                'series-b': 22,
+                'series-c+': 25,
+                'ipo': 25
+            };
+            const fundingScore = fundingScores[data.fundingStage] || 0;
+            score += fundingScore;
+            signals.funding = { value: data.fundingStage, score: fundingScore };
+
+            // Growth rate score (0-20 points)
+            const growthScores = {
+                'declining': 0,
+                'stable': 5,
+                'moderate': 12,
+                'rapid': 20
+            };
+            const growthScore = growthScores[data.growthRate] || 0;
+            score += growthScore;
+            signals.growth = { value: data.growthRate, score: growthScore };
+
+            // Industry fit (0-15 points)
+            const industryScores = {
+                'saas': 15,
+                'fintech': 15,
+                'ecommerce': 12,
+                'healthcare': 10,
+                'manufacturing': 8,
+                'other': 5
+            };
+            const industryScore = industryScores[data.industry] || 0;
+            score += industryScore;
+            signals.industry = { value: data.industry, score: industryScore };
+
+            // Tech sophistication (0-15 points, scaled from 0-100 input)
+            const techScaled = Math.round((data.techScore / 100) * 15);
+            score += techScaled;
+            signals.tech = { value: data.techScore, score: techScaled };
+
+            // Normalize to 0-100
+            const maxScore = 100;
+            const finalScore = Math.min(100, Math.round((score / maxScore) * 100));
+
+            // Determine tier
+            let tier = 'cold';
+            let tierEmoji = '❄️';
+            let tierLabel = 'Cold Lead';
+            let tierColor = 'cold';
+
+            if (finalScore >= 75) {
+                tier = 'hot';
+                tierEmoji = '🔥';
+                tierLabel = 'Hot Lead';
+                tierColor = 'hot';
+            } else if (finalScore >= 50) {
+                tier = 'warm';
+                tierEmoji = '🌡️';
+                tierLabel = 'Warm Lead';
+                tierColor = 'warm';
+            } else if (finalScore >= 25) {
+                tier = 'cool';
+                tierEmoji = '❄️';
+                tierLabel = 'Cool Lead';
+                tierColor = 'cool';
+            }
+
+            return {
+                domain: data.domain,
+                score: finalScore,
+                tier,
+                tierEmoji,
+                tierLabel,
+                tierColor,
+                signals,
+                timestamp: new Date().toISOString()
+            };
+        }
+
+        // Get signal value class
+        function getSignalClass(score, max = 25) {
+            const ratio = score / max;
+            if (ratio >= 0.7) return 'high';
+            if (ratio >= 0.4) return 'medium';
+            return 'low';
+        }
+
+        // Format value for display
+        function formatValue(value, type) {
+            if (type === 'companySize') {
+                return value + ' employees';
+            }
+            if (type === 'fundingStage') {
+                return value.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+            }
+            if (type === 'growthRate') {
+                return value.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+            }
+            if (type === 'industry') {
+                return value.charAt(0).toUpperCase() + value.slice(1);
+            }
+            if (type === 'techScore') {
+                return value + '/100';
+            }
+            return value;
+        }
+
+        // Display results
+        function displayResults(result) {
+            loading.classList.remove('active');
+            resultsEmpty.style.display = 'none';
+            results.classList.add('active');
+
+            // Animate score
+            const scoreProgress = document.getElementById('scoreProgress');
+            const scoreValue = document.getElementById('scoreValue');
+            const circumference = 2 * Math.PI * 54;
+            const offset = circumference - (result.score / 100) * circumference;
+
+            scoreProgress.style.setProperty('--score-offset', offset);
+            scoreProgress.style.stroke = getTierColor(result.tier);
+            scoreValue.textContent = result.score;
+            scoreValue.style.color = getTierColor(result.tier);
+
+            // Update tier badge
+            const tierBadge = document.getElementById('tierBadge');
+            const tierEmoji = document.getElementById('tierEmoji');
+            const tierText = document.getElementById('tierText');
+
+            tierBadge.className = `score-tier-badge ${result.tierColor}`;
+            tierEmoji.textContent = result.tierEmoji;
+            tierText.textContent = result.tierLabel;
+
+            // Update signals
+            document.getElementById('sizeSignal').textContent = formatValue(result.signals.size.value, 'companySize');
+            document.getElementById('sizeSignal').className = `signal-value ${getSignalClass(result.signals.size.score, 25)}`;
+
+            document.getElementById('fundingSignal').textContent = formatValue(result.signals.funding.value, 'fundingStage');
+            document.getElementById('fundingSignal').className = `signal-value ${getSignalClass(result.signals.funding.score, 25)}`;
+
+            document.getElementById('growthSignal').textContent = formatValue(result.signals.growth.value, 'growthRate');
+            document.getElementById('growthSignal').className = `signal-value ${getSignalClass(result.signals.growth.score, 20)}`;
+
+            document.getElementById('industrySignal').textContent = formatValue(result.signals.industry.value, 'industry');
+            document.getElementById('industrySignal').className = `signal-value ${getSignalClass(result.signals.industry.score, 15)}`;
+
+            document.getElementById('techSignal').textContent = formatValue(result.signals.tech.value, 'techScore');
+            document.getElementById('techSignal').className = `signal-value ${getSignalClass(result.signals.tech.score, 15)}`;
+
+            const potentialText = result.score >= 75 ? 'High' : result.score >= 50 ? 'Medium' : 'Low';
+            document.getElementById('potentialSignal').textContent = potentialText;
+        }
+
+        // Get tier color
+        function getTierColor(tier) {
+            const colors = {
+                hot: '#ff4757',
+                warm: '#ffa502',
+                cool: '#3742fa',
+                cold: '#747d8c'
+            };
+            return colors[tier] || colors.cold;
+        }
+
+        // Update history
+        function updateHistory() {
+            if (scores.length === 0) {
+                historyList.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📊</div>
+                        <p>No scores yet. Enter a company above to get started.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            historyList.innerHTML = scores.slice(0, 5).map(score => `
+                <div class="history-item" data-domain="${score.domain}">
+                    <span class="history-domain">${score.domain}</span>
+                    <div class="history-score">
+                        <span class="history-score-value">${score.score}</span>
+                        <span class="history-tier ${score.tierColor}">${score.tierEmoji} ${score.tierLabel}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            historyList.querySelectorAll('.history-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const domain = item.dataset.domain;
+                    const score = scores.find(s => s.domain === domain);
+                    if (score) {
+                        displayResults(score);
+                        document.getElementById('domain').value = score.domain;
+                    }
+                });
+            });
+        }
+
+        // Save score
+        function saveScore(result) {
+            scores.unshift(result);
+            scores = scores.slice(0, 20); // Keep last 20
+            localStorage.setItem('leadQualifierScores', JSON.stringify(scores));
+            updateHistory();
+        }
+
+        // Form submit
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                domain: document.getElementById('domain').value.trim(),
+                companySize: document.getElementById('companySize').value,
+                industry: document.getElementById('industry').value,
+                fundingStage: document.getElementById('fundingStage').value,
+                growthRate: document.getElementById('growthRate').value,
+                techScore: parseInt(document.getElementById('techScore').value)
+            };
+
+            // Show loading
+            results.classList.remove('active');
+            resultsEmpty.style.display = 'block';
+            loading.classList.add('active');
+
+            // Simulate processing
+            await new Promise(resolve => setTimeout(resolve, 800));
+
+            const result = calculateScore(data);
+            saveScore(result);
+            displayResults(result);
+        });
+
+        // Export button
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            const result = scores[0];
+            if (!result) return;
+
+            const data = JSON.stringify(result, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `lead-${result.domain}-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Copy button
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            const result = scores[0];
+            if (!result) return;
+
+            const text = `
+LeadQualifier Score Report
+==========================
+Domain: ${result.domain}
+Score: ${result.score}/100
+Tier: ${result.tierLabel} ${result.tierEmoji}
+
+Signals:
+- Company Size: ${result.signals.size.value}
+- Funding: ${result.signals.funding.value}
+- Growth: ${result.signals.growth.value}
+- Industry: ${result.signals.industry.value}
+- Tech Score: ${result.signals.tech.value}/100
+
+Generated: ${new Date(result.timestamp).toLocaleString()}
+            `.trim();
+
+            navigator.clipboard.writeText(text);
+            const btn = document.getElementById('copyBtn');
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Copied!';
+            setTimeout(() => btn.textContent = originalText, 2000);
+        });
+
+        // Initialize
+        updateHistory();
+    </script>
+</body>
+</html>
