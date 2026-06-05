@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"gh repo create eylulsenakumral/keyspinner-cli --public --description \\\"CLI tool to scan GitHub repositories for leaked secrets\\\" --source=. --push 2>&1\",\"description\":\"Create GitHub repo\"}",
-  "error": "Exit code 1\nhttps://github.com/eylulsenakumral/keyspinner-cli\nX Unable to add remote \"origin\"",
-  "timestamp": "2026-06-05T16:14:51.908Z",
+  "tool_input_preview": "{\"command\":\"cd /home/tolgabrk/projects/Auto-Company/projects/reviewflow-cli && node bin/run.js analyze https://invalid-url\",\"description\":\"Test invalid URL error\"}",
+  "error": "Exit code 2\n ›   Error: Invalid PR URL. Expected: https://github.com/owner/repo/pull/123",
+  "timestamp": "2026-06-05T18:06:01.826Z",
   "retry_count": 9
 }
