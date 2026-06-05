@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd /home/tolgabrk/projects/Auto-Company/projects/keyspinner && npx tsc --noEmit 2>&1\",\"description\":\"Run TypeScript type check again\"}",
-  "error": "Exit code 2\nsrc/lib/secrets.ts(182,34): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.\n  Type 'undefined' is not assignable to type 'string'.",
-  "timestamp": "2026-06-05T15:42:01.104Z",
-  "retry_count": 1
+  "tool_input_preview": "{\"command\":\"gh repo create eylulsenakumral/keyspinner-cli --public --description \\\"CLI tool to scan GitHub repositories for leaked secrets\\\" --source=. --push 2>&1\",\"description\":\"Create GitHub repo\"}",
+  "error": "Exit code 1\nhttps://github.com/eylulsenakumral/keyspinner-cli\nX Unable to add remote \"origin\"",
+  "timestamp": "2026-06-05T16:14:51.908Z",
+  "retry_count": 9
 }
