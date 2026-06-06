@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "93fc2e7e",
+      "cron": "30 0 7 6 *",
+      "prompt": "/loop Run ghlint metrics check and update consensus",
+      "createdAt": 1780708160489,
+      "createdBySessionId": "2809c7a7-d46c-4197-b0b7-dca1efe65d6a",
+      "createdByPid": 3802082,
+      "createdByProcStart": "48364349"
+    },
+    {
+      "id": "6cf49927",
+      "cron": "30 0 8 6 *",
+      "prompt": "/loop Run ghlint Day 2 metrics check and update consensus",
+      "createdAt": 1780716670917,
+      "createdBySessionId": "cd6264fa-1560-4eab-9340-189f085713ad",
+      "createdByPid": 481196,
+      "createdByProcStart": "49209580"
+    }
+  ]
+}

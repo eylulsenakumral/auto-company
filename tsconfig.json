@@ -1,5 +1,5 @@
 {
   "files": [],
   "references": [],
-  "exclude": ["node_modules", "dist", "build"]
+  "exclude": ["node_modules", "dist", "build", "releaseflow", "keyspinner-cli"]
 }
