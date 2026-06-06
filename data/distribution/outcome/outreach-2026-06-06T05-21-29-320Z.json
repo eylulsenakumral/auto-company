@@ -1,0 +1,436 @@
+[
+  {
+    "issue": {
+      "id": "1",
+      "title": "code review",
+      "url": "https://github.com/aminogoule/avocato/issues/1",
+      "repository": "aminogoule/avocato",
+      "author": "aminogoule",
+      "createdAt": "2026-06-04T14:24:19Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/aminogoule/avocato/issues/1"
+  },
+  {
+    "issue": {
+      "id": "4",
+      "title": "## Code Review",
+      "url": "https://github.com/almastazeen/core-java/issues/4",
+      "repository": "almastazeen/core-java",
+      "author": "hourtashghasemi-collab",
+      "createdAt": "2026-06-04T22:29:10Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/almastazeen/core-java/issues/4"
+  },
+  {
+    "issue": {
+      "id": "27653",
+      "title": "## Code Review",
+      "url": "https://github.com/google-gemini/gemini-cli/issues/27653",
+      "repository": "google-gemini/gemini-cli",
+      "author": "sin325",
+      "createdAt": "2026-06-03T14:38:47Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/google-gemini/gemini-cli/issues/27653"
+  },
+  {
+    "issue": {
+      "id": "8",
+      "title": "Code Review",
+      "url": "https://github.com/JasinAhmed/proof-of-concept/issues/8",
+      "repository": "JasinAhmed/proof-of-concept",
+      "author": "JasinAhmed",
+      "createdAt": "2026-06-05T07:50:06Z",
+      "comments": 4,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/JasinAhmed/proof-of-concept/issues/8"
+  },
+  {
+    "issue": {
+      "id": "41",
+      "title": "Review Code",
+      "url": "https://github.com/ssmall41/pi_poetry/issues/41",
+      "repository": "ssmall41/pi_poetry",
+      "author": "ssmall41",
+      "createdAt": "2026-05-28T11:59:03Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/ssmall41/pi_poetry/issues/41"
+  },
+  {
+    "issue": {
+      "id": "1",
+      "title": "Code Review",
+      "url": "https://github.com/jc-hicks/jc-hicks.github.io/issues/1",
+      "repository": "jc-hicks/jc-hicks.github.io",
+      "author": "clbarry",
+      "createdAt": "2026-05-26T03:37:04Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/jc-hicks/jc-hicks.github.io/issues/1"
+  },
+  {
+    "issue": {
+      "id": "7",
+      "title": "Code/Design review",
+      "url": "https://github.com/MaartentePoele/proof-of-concept/issues/7",
+      "repository": "MaartentePoele/proof-of-concept",
+      "author": "MaartentePoele",
+      "createdAt": "2026-06-05T08:03:51Z",
+      "comments": 4,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/MaartentePoele/proof-of-concept/issues/7"
+  },
+  {
+    "issue": {
+      "id": "6",
+      "title": "Add code review",
+      "url": "https://github.com/ageley/brownie/issues/6",
+      "repository": "ageley/brownie",
+      "author": "ageley",
+      "createdAt": "2026-06-05T14:07:47Z",
+      "comments": 1,
+      "keyword": "code review"
+    },
+    "status": "failed",
+    "error": "Validation Failed: {\"resource\":\"IssueComment\",\"code\":\"unprocessable\",\"field\":\"data\",\"message\":\"could not be created. Interactions on this repository have been restricted to collaborators only.\"} - https://docs.github.com/rest/issues/comments#create-an-issue-comment"
+  },
+  {
+    "issue": {
+      "id": "116",
+      "title": "Review geometry code",
+      "url": "https://github.com/brunomaletta/tgen/issues/116",
+      "repository": "brunomaletta/tgen",
+      "author": "brunomaletta",
+      "createdAt": "2026-06-04T22:21:27Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/brunomaletta/tgen/issues/116"
+  },
+  {
+    "issue": {
+      "id": "1",
+      "title": "code review",
+      "url": "https://github.com/RaelK/lab01_projetosoftware/issues/1",
+      "repository": "RaelK/lab01_projetosoftware",
+      "author": "brunalpss",
+      "createdAt": "2026-05-28T02:42:45Z",
+      "comments": 0,
+      "keyword": "code review"
+    },
+    "status": "posted",
+    "url": "https://github.com/RaelK/lab01_projetosoftware/issues/1"
+  },
+  {
+    "issue": {
+      "id": "3169",
+      "title": "[PR Triage Report] PR Triage Report - 2026-06-05 (Run #27035481917)",
+      "url": "https://github.com/amalgamated-tools/biblioteka/issues/3169",
+      "repository": "amalgamated-tools/biblioteka",
+      "author": "amalgamated-bot",
+      "createdAt": "2026-06-05T19:29:47Z",
+      "comments": 0,
+      "keyword": "PR triage"
+    },
+    "status": "posted",
+    "url": "https://github.com/amalgamated-tools/biblioteka/issues/3169"
+  },
+  {
+    "issue": {
+      "id": "115",
+      "title": "Weekly PR Triage — 2026-05-31",
+      "url": "https://github.com/dmh4681/sovereignty-portfolio/issues/115",
+      "repository": "dmh4681/sovereignty-portfolio",
+      "author": "dmh4681",
+      "createdAt": "2026-05-31T14:03:36Z",
+      "comments": 0,
+      "keyword": "PR triage"
+    },
+    "status": "posted",
+    "url": "https://github.com/dmh4681/sovereignty-portfolio/issues/115"
+  },
+  {
+    "issue": {
+      "id": "2",
+      "title": "AI Slop",
+      "url": "https://github.com/alexdoescodes/plasma-app-folder-widget/issues/2",
+      "repository": "alexdoescodes/plasma-app-folder-widget",
+      "author": "astr64",
+      "createdAt": "2026-06-05T01:07:15Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/alexdoescodes/plasma-app-folder-widget/issues/2"
+  },
+  {
+    "issue": {
+      "id": "6",
+      "title": "ai slop",
+      "url": "https://github.com/Son3ra1n/Andromeda/issues/6",
+      "repository": "Son3ra1n/Andromeda",
+      "author": "BatuBey5G",
+      "createdAt": "2026-05-16T17:26:46Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/Son3ra1n/Andromeda/issues/6"
+  },
+  {
+    "issue": {
+      "id": "1",
+      "title": "AI Slop",
+      "url": "https://github.com/julianberdouare-oss/graph-coloring-rl/issues/1",
+      "repository": "julianberdouare-oss/graph-coloring-rl",
+      "author": "balko186",
+      "createdAt": "2026-05-16T04:11:31Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/julianberdouare-oss/graph-coloring-rl/issues/1"
+  },
+  {
+    "issue": {
+      "id": "5",
+      "title": "ai slop ahh bot",
+      "url": "https://github.com/plainssmc-boop/Poopoo.pro-BOT/issues/5",
+      "repository": "plainssmc-boop/Poopoo.pro-BOT",
+      "author": "BitonicDev",
+      "createdAt": "2026-06-05T22:57:00Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/plainssmc-boop/Poopoo.pro-BOT/issues/5"
+  },
+  {
+    "issue": {
+      "id": "1",
+      "title": "SLOP",
+      "url": "https://github.com/corryl/FindMyPipe/issues/1",
+      "repository": "corryl/FindMyPipe",
+      "author": "astr64",
+      "createdAt": "2026-06-05T18:58:18Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/corryl/FindMyPipe/issues/1"
+  },
+  {
+    "issue": {
+      "id": "9",
+      "title": "Please delete this AI slop",
+      "url": "https://github.com/sashankaryal/consearch/issues/9",
+      "repository": "sashankaryal/consearch",
+      "author": "ashim-mahara",
+      "createdAt": "2026-06-05T21:31:04Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/sashankaryal/consearch/issues/9"
+  },
+  {
+    "issue": {
+      "id": "391",
+      "title": "chore: AI Generated Slop",
+      "url": "https://github.com/Token-Buzz/website/issues/391",
+      "repository": "Token-Buzz/website",
+      "author": "jasonp2323",
+      "createdAt": "2026-06-04T13:50:51Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/Token-Buzz/website/issues/391"
+  },
+  {
+    "issue": {
+      "id": "1",
+      "title": "Removing the AI slop",
+      "url": "https://github.com/naitiknanda/naitiknanda/issues/1",
+      "repository": "naitiknanda/naitiknanda",
+      "author": "EuropeanRat",
+      "createdAt": "2026-06-04T18:31:21Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/naitiknanda/naitiknanda/issues/1"
+  },
+  {
+    "issue": {
+      "id": "2",
+      "title": "Clean up AI slop",
+      "url": "https://github.com/UStAEnts/ndi-multiview/issues/2",
+      "repository": "UStAEnts/ndi-multiview",
+      "author": "Computroniks",
+      "createdAt": "2026-05-18T13:19:14Z",
+      "comments": 0,
+      "keyword": "AI slop"
+    },
+    "status": "posted",
+    "url": "https://github.com/UStAEnts/ndi-multiview/issues/2"
+  },
+  {
+    "issue": {
+      "id": "645",
+      "title": "Code quality",
+      "url": "https://github.com/chombo-discharge/chombo-discharge/issues/645",
+      "repository": "chombo-discharge/chombo-discharge",
+      "author": "rmrsk",
+      "createdAt": "2026-06-05T13:25:00Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/chombo-discharge/chombo-discharge/issues/645"
+  },
+  {
+    "issue": {
+      "id": "232",
+      "title": "Code quality",
+      "url": "https://github.com/Artsdatabanken/Artskart3/issues/232",
+      "repository": "Artsdatabanken/Artskart3",
+      "author": "Kristoffer-Martinsen",
+      "createdAt": "2026-05-26T14:15:53Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/Artsdatabanken/Artskart3/issues/232"
+  },
+  {
+    "issue": {
+      "id": "25",
+      "title": "Check code quality",
+      "url": "https://github.com/arseniedev/blueprint-nz/issues/25",
+      "repository": "arseniedev/blueprint-nz",
+      "author": "arseniedev",
+      "createdAt": "2026-05-30T06:36:51Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/arseniedev/blueprint-nz/issues/25"
+  },
+  {
+    "issue": {
+      "id": "261",
+      "title": "[Quality] SonarCloud integration + initial code-quality audit",
+      "url": "https://github.com/JoshMcQ/SparkPilot/issues/261",
+      "repository": "JoshMcQ/SparkPilot",
+      "author": "JoshMcQ",
+      "createdAt": "2026-06-02T20:59:46Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/JoshMcQ/SparkPilot/issues/261"
+  },
+  {
+    "issue": {
+      "id": "1044",
+      "title": "Epic: Code Quality",
+      "url": "https://github.com/Abilityai/trinity/issues/1044",
+      "repository": "Abilityai/trinity",
+      "author": "vybe",
+      "createdAt": "2026-06-03T12:22:20Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/Abilityai/trinity/issues/1044"
+  },
+  {
+    "issue": {
+      "id": "1",
+      "title": "Quality of Code",
+      "url": "https://github.com/BothBasilisk/agnostic-audio-engine/issues/1",
+      "repository": "BothBasilisk/agnostic-audio-engine",
+      "author": "BothBasilisk",
+      "createdAt": "2026-05-29T12:06:23Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/BothBasilisk/agnostic-audio-engine/issues/1"
+  },
+  {
+    "issue": {
+      "id": "7",
+      "title": "Code quality thread",
+      "url": "https://github.com/ASmaller/spill-the-tea/issues/7",
+      "repository": "ASmaller/spill-the-tea",
+      "author": "olillin",
+      "createdAt": "2026-06-02T11:02:37Z",
+      "comments": 4,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/ASmaller/spill-the-tea/issues/7"
+  },
+  {
+    "issue": {
+      "id": "2",
+      "title": "# Kvalitet koda (Code Quality)",
+      "url": "https://github.com/ddevedzic1/code-collab/issues/2",
+      "repository": "ddevedzic1/code-collab",
+      "author": "adiltutun12",
+      "createdAt": "2026-06-05T15:55:19Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/ddevedzic1/code-collab/issues/2"
+  },
+  {
+    "issue": {
+      "id": "32",
+      "title": "eAushadhi - UI :: Code Quality",
+      "url": "https://github.com/care-ecosystem/care_eaushadhi_fe/issues/32",
+      "repository": "care-ecosystem/care_eaushadhi_fe",
+      "author": "pranavrutagi-egov",
+      "createdAt": "2026-06-04T06:17:52Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/care-ecosystem/care_eaushadhi_fe/issues/32"
+  },
+  {
+    "issue": {
+      "id": "65",
+      "title": "Epic: Code quality & CI",
+      "url": "https://github.com/butterflyskies/cc-toolgate/issues/65",
+      "repository": "butterflyskies/cc-toolgate",
+      "author": "butterflysky-ai",
+      "createdAt": "2026-06-05T19:21:24Z",
+      "comments": 0,
+      "keyword": "code quality"
+    },
+    "status": "posted",
+    "url": "https://github.com/butterflyskies/cc-toolgate/issues/65"
+  }
+]
