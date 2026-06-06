@@ -1,0 +1,68 @@
+name: GitHub Issue Outreach
+
+on:
+  workflow_dispatch:
+    inputs:
+      filter:
+        description: 'Filter issues by keyword (optional)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run mode (no actual comments posted)'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  outreach:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Generate GitHub App token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.GITHUB_OUTREACH_APP_ID }}
+          private-key: ${{ secrets.GITHUB_OUTREACH_APP_KEY }}
+
+      - name: Run outreach script
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          ARGS="--execute"
+          if [ "${{ inputs.dry_run }}" = "true" ] || [ -z "${{ inputs.dry_run }}" ]; then
+            echo "Running in DRY RUN mode"
+            ARGS=""
+          fi
+
+          if [ -n "${{ inputs.filter }}" ]; then
+            ARGS="$ARGS --filter=${{ inputs.filter }}"
+          fi
+
+          node scripts/distribution/gh-outreach.cjs $ARGS
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: outreach-results-${{ github.run_number }}
+          path: data/distribution/outcome/
+          retention-days: 30
