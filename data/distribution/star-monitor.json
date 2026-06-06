@@ -1,0 +1,582 @@
+{
+  "repos": {
+    "eylulsenakumral/releaseflow": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.536Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.536Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/gh-lint-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.567Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.567Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/homebrew-tap": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/ghprof-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/multirun-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/reviewflow-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/keyspinner": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/keyspinner-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/github-actions-cost-optimizer": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/formforge": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/business-idea-generator": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/dev-encoding-toolkit": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.568Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.568Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/quarterly-tax-deadline-reminder-fake-door": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/rsu-tax-calculator": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/github-actions-optimizer": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/webhook-debug": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/leadqualifier-v4": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/github-org-analyzer-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/rsu-tracker": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/rsu-tax-lot-tracker": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/changelog-generator": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/smoke-test-landing-pages": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/webhook-hosting-service": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.569Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.569Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/self-hosted-analytics": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/webhook-logger": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/product-hunt-launch-template": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/bot-analytics-cli": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/product-launch-tool-api": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/bot-analytics-dashboard": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/product-launch-tool": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/telegram-notion-template-bot": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/notion-templates": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/autotask-app": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/next-ai-teknoloji": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/claudeclaw": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    },
+    "eylulsenakumral/tamirhanemcom": {
+      "history": [
+        {
+          "stars": 0,
+          "timestamp": "2026-06-06T04:49:22.570Z",
+          "delta": 0,
+          "deltaDays": 1
+        }
+      ],
+      "current": {
+        "stars": 0,
+        "timestamp": "2026-06-06T04:49:22.570Z",
+        "delta": 0,
+        "deltaDays": 1
+      }
+    }
+  },
+  "lastUpdate": "2026-06-06T04:49:22.570Z",
+  "alertThreshold": 5
+}

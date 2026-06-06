@@ -1,0 +1,106 @@
+{
+  "campaign": "reviewflow-cli GitHub Outreach Cycle 506",
+  "product": "reviewflow-cli",
+  "product_url": "https://github.com/eylulsenakumral/reviewflow-cli",
+  "goal": "10+ stars in 30 days",
+  "started_at": "2026-06-06",
+  "completed_at": "2026-06-06",
+  "targets": [
+    {
+      "repo": "lingdojo/kana-dojo",
+      "issue_url": "https://github.com/lingdojo/kana-dojo/issues/19729",
+      "issue_number": 19729,
+      "open_prs": 30,
+      "angle": "Content/theme PR categorization for batch review",
+      "status": "created"
+    },
+    {
+      "repo": "ZeusLN/zeus",
+      "issue_url": "https://github.com/ZeusLN/zeus/issues/4144",
+      "issue_number": 4144,
+      "open_prs": 30,
+      "angle": "Security-focused PR risk categorization",
+      "status": "created"
+    },
+    {
+      "repo": "owncloud/web",
+      "issue_url": "https://github.com/owncloud/web/issues/13854",
+      "issue_number": 13854,
+      "open_prs": 29,
+      "angle": "Automated size estimation to match existing labels",
+      "status": "created"
+    },
+    {
+      "repo": "The-Vibe-Company/companion",
+      "issue_url": "https://github.com/The-Vibe-Company/companion/issues/673",
+      "issue_number": 673,
+      "open_prs": 30,
+      "angle": "PR type categorization for Claude Code companion",
+      "status": "created"
+    },
+    {
+      "repo": "microsoft/FluidFramework",
+      "issue_url": "https://github.com/microsoft/FluidFramework/issues/27502",
+      "issue_number": 27502,
+      "open_prs": 30,
+      "angle": "Area-based categorization for collaborative framework",
+      "status": "created"
+    },
+    {
+      "repo": "boardsesh/boardsesh",
+      "issue_url": "https://github.com/boardsesh/boardsesh/issues/2556",
+      "issue_number": 2556,
+      "open_prs": 30,
+      "angle": "Platform detection for mobile/codex climbing app",
+      "status": "created"
+    },
+    {
+      "repo": "AudiusProject/apps",
+      "issue_url": "https://github.com/AudiusProject/apps/issues/14456",
+      "issue_number": 14456,
+      "open_prs": 30,
+      "angle": "Service detection + size labeling for music streaming",
+      "status": "created"
+    },
+    {
+      "repo": "nestjs/swagger",
+      "issue_url": "https://github.com/nestjs/swagger/issues/3956",
+      "issue_number": 3956,
+      "open_prs": 12,
+      "angle": "Stale PR detection (6+ month backlog)",
+      "status": "created"
+    },
+    {
+      "repo": "atampy25/simple-mod-framework",
+      "issue_url": "https://github.com/atampy25/simple-mod-framework/issues/942",
+      "issue_number": 942,
+      "open_prs": 21,
+      "angle": "2+ year backlog cleanup for mod framework",
+      "status": "created"
+    },
+    {
+      "repo": "shellhub-io/shellhub",
+      "issue_url": "https://github.com/shellhub-io/shellhub/issues/6437",
+      "issue_number": 6437,
+      "open_prs": 9,
+      "angle": "5-year backlog cleanup for SSH hub",
+      "status": "created"
+    }
+  ],
+  "summary": {
+    "total_outreach": 10,
+    "total_prs_targeted": 241,
+    "avg_prs_per_repo": 24.1,
+    "angles_used": [
+      "batch content/theme review",
+      "security risk categorization",
+      "automated sizing",
+      "type categorization",
+      "area-based routing",
+      "platform detection",
+      "service detection",
+      "stale backlog cleanup",
+      "dependency triage"
+    ]
+  }
+}

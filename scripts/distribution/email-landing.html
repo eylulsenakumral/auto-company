@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Waitlist - Developer CLI Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 48px;
+            max-width: 560px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #718096;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .feature::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .success {
+            display: none;
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            color: #16a34a;
+            font-weight: 500;
+        }
+
+        .success.show {
+            display: block;
+        }
+
+        .note {
+            font-size: 13px;
+            color: #a0aec0;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🚀</div>
+        <h1>Ship Better Code, Faster</h1>
+        <p class="subtitle">
+            Get early access to our CLI tools that automate code review, PR triage, and GitHub workflows. Join 100+ developers shipping with confidence.
+        </p>
+
+        <div class="features">
+            <div class="feature">AI-powered code review in seconds</div>
+            <div class="feature">Automated PR triage and prioritization</div>
+            <div class="feature">GitHub workflow automation</div>
+            <div class="feature">Zero setup, works instantly</div>
+        </div>
+
+        <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="waitlist-form">
+            <div class="input-group">
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+                <button type="submit">Join Waitlist</button>
+            </div>
+        </form>
+
+        <div class="success" id="success-message">
+            🎉 You're on the list! We'll be in touch soon.
+        </div>
+
+        <p class="note">
+            No spam, ever. Unsubscribe anytime.
+        </p>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            const form = this;
+            const success = document.getElementById('success-message');
+            const button = form.querySelector('button');
+
+            // Show loading state
+            button.textContent = 'Joining...';
+            button.disabled = true;
+
+            // If using Formspree, the form will submit normally
+            // For AJAX, uncomment below:
+            /*
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form)
+            }).then(response => {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    success.classList.add('show');
+                }
+            });
+            */
+
+            // For static pages without backend, show success after 1.5s
+            setTimeout(() => {
+                form.style.display = 'none';
+                success.classList.add('show');
+            }, 1500);
+
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "product": "reviewflow-cli",
+  "repo": "eylulsenakumral/reviewflow-cli",
+  "url": "https://github.com/eylulsenakumral/reviewflow-cli",
+  "tracking_start": "2026-06-06",
+  "goal": {
+    "stars": 10,
+    "days": 30
+  },
+  "daily": [
+    {
+      "date": "2026-06-06",
+      "stars": 1,
+      "forks": 0,
+      "watchers": 0,
+      "outreach_issues": 10,
+      "social_posts": 0
+    }
+  ],
+  "outreach_repos": [
+    "lingdojo/kana-dojo",
+    "ZeusLN/zeus",
+    "owncloud/web",
+    "The-Vibe-Company/companion",
+    "microsoft/FluidFramework",
+    "boardsesh/boardsesh",
+    "AudiusProject/apps",
+    "nestjs/swagger",
+    "atampy25/simple-mod-framework",
+    "shellhub-io/shellhub"
+  ]
+}
