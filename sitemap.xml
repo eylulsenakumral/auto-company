@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://auto-company.com/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Products (31 developer tools) -->
+  <!-- Individual product pages will be added when created -->
+  <!-- For now, all products are listed on the homepage -->
+
+  <!-- Documentation (if created separately) -->
+  <!-- <url>
+    <loc>https://auto-company.com/docs</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url> -->
+</urlset>

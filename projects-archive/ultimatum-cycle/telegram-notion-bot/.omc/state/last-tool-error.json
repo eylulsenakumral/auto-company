@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/home/tolgabrk/projects/Auto-Company/public/notion-templates/01-decision-log-template.md\"}",
+  "error": "File does not exist. Note: your current working directory is /home/tolgabrk/projects/Auto-Company/projects/telegram-notion-bot.",
+  "timestamp": "2026-06-03T14:29:28.100Z",
+  "retry_count": 2
+}

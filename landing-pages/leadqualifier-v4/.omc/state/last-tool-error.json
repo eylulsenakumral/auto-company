@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"gh repo edit eylulsenakumral/leadqualifier-v4 --add topics \\\"landing-page,lead-generation,marketing,offline-ready,single-file\\\" 2>&1\",\"description\":\"Add topics to LeadQualifier repo\"}",
+  "error": "Exit code 1\nunknown flag: --add\n\nUsage:  gh repo edit [<repository>] [flags]\n\nFlags:\n      --add-topic strings        Add repository topic\n      --allow-forking            Allow forking of an organization repository\n      --allow-update-branch      Allow a pull request head branch that is behind its base branch to be updated\n      --default-branch name      Set the default branch name for the repository\n      --delete-branch-on-merge   Delete head branch when pull requests are merged\n  -d, --des...",
+  "timestamp": "2026-06-05T01:47:48.447Z",
+  "retry_count": 1
+}

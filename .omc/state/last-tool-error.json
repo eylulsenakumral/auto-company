@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"npm run build 2>&1\",\"description\":\"Build reviewflow-cli\"}",
+  "error": "Exit code 2\n\n> keyspinner-scan@1.0.0 build\n> tsc\n\ntsconfig.json(2,12): error TS18002: The 'files' list in config file '/home/tolgabrk/projects/Auto-Company/tsconfig.json' is empty.",
+  "timestamp": "2026-06-06T07:12:23.432Z",
+  "retry_count": 9
+}
