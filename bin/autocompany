@@ -1,0 +1,156 @@
+#!/usr/bin/env node
+/**
+ * Auto Company CLI Launcher
+ * Autonomous AI Company Toolkit
+ *
+ * @version 1.1.0
+ * @author Auto Company
+ */
+
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { readFileSync } from 'fs';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const AUTOCOMPANY_ROOT = join(__dirname, '..');
+
+// List available tools
+function listTools() {
+  console.log(`
+Auto Company - Available Tools:
+
+Security:
+  keyspinner           - API key rotation manager
+
+Automation:
+  bot-analytics-cli    - Telegram bot analytics
+  migration-validator  - Database migration verification
+  webhook-logger       - Webhook testing & debugging
+
+Developer:
+  business-idea-generator - Startup idea generation
+  product-hunt-tool-api   - Product Hunt automation
+
+Usage: autocompany <tool-name> [args]
+
+Example:
+  autocompany keyspinner scan myorg/myrepo
+  autocompany bot-analytics-cli --token YOUR_BOT_TOKEN
+`);
+}
+
+// Show version
+function showVersion() {
+  const packagePath = join(AUTOCOMPANY_ROOT, 'package.json');
+  let version = '1.1.0';
+
+  try {
+    const pkg = JSON.parse(readFileSync(packagePath, 'utf-8'));
+    version = pkg.version;
+  } catch {
+    // Use default version
+  }
+
+  console.log(`Auto Company v${version}`);
+  console.log('28+ tools for autonomous AI company operations');
+}
+
+// Show help
+function showHelp() {
+  console.log(`
+Auto Company CLI - Autonomous AI Company Toolkit
+
+Commands:
+  autocompany list          - List available tools
+  autocompany version       - Show version
+  autocompany <tool> [args] - Run a tool
+`);
+  listTools();
+}
+
+// Main CLI router
+async function main() {
+  const args = process.argv.slice(2);
+  const command = args[0];
+
+  switch (command) {
+    case 'list':
+    case '--list':
+    case 'ls':
+      listTools();
+      break;
+
+    case 'version':
+    case '--version':
+    case '-v':
+      showVersion();
+      break;
+
+    case 'help':
+    case '--help':
+    case '-h':
+    case '':
+      showHelp();
+      break;
+
+    default: {
+      // Try to run a tool
+      const toolName = args[0];
+      const toolArgs = args.slice(1);
+
+      if (!toolName) {
+        showHelp();
+        process.exit(1);
+      }
+
+      // Tool path resolution (matches install.sh logic)
+      const toolPaths = [
+        join(AUTOCOMPANY_ROOT, 'projects-archive/ultimatum-cycle', toolName),
+        join(AUTOCOMPANY_ROOT, 'projects-archive/ultimatum-cycle', toolName, 'index.js'),
+        join(AUTOCOMPANY_ROOT, 'projects-archive/ultimatum-cycle', toolName, 'cli.js'),
+        join(AUTOCOMPANY_ROOT, 'projects-archive/ultimatum-cycle', toolName, 'dist', 'cli.js'),
+      ];
+
+      let toolPath = null;
+      for (const path of toolPaths) {
+        try {
+          const stats = readFileSync(path, 'utf-8');
+          toolPath = path;
+          break;
+        } catch {
+          // Continue checking
+        }
+      }
+
+      if (toolPath) {
+        // Dynamic import to run the tool
+        try {
+          const toolModule = await import(`file://${toolPath}`);
+          if (toolModule.default && typeof toolModule.default === 'function') {
+            await toolModule.default(...toolArgs);
+          } else if (toolModule.run && typeof toolModule.run === 'function') {
+            await toolModule.run(...toolArgs);
+          } else {
+            console.error(`Error: Tool '${toolName}' has no valid export`);
+            process.exit(1);
+          }
+        } catch (error) {
+          console.error(`Error running tool '${toolName}':`, error.message);
+          process.exit(1);
+        }
+      } else {
+        console.error(`\\x1b[31mError: Tool '${toolName}' not found\\x1b[0m`);
+        console.error('');
+        console.error("Run 'autocompany list' to see available tools");
+        process.exit(1);
+      }
+      break;
+    }
+  }
+}
+
+main().catch((error) => {
+  console.error('Fatal error:', error);
+  process.exit(1);
+});
